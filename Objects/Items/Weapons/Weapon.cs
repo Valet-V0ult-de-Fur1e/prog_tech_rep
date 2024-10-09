@@ -11,9 +11,12 @@ namespace OOP.Objects.Items.Weapons
         private protected int damage;
         private protected int attackRadius;
 
-        public Weapon(int id, string name, int x, int y) : base(id, name, x, y)
+        public Weapon(string name, int x, int y, int attackRadius, int damage) : base(name, x, y)
         {
+            this.damage = damage;
+            this.attackRadius = attackRadius;
         }
+
 
         public int getDamage() 
         { 

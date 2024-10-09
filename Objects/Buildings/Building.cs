@@ -8,14 +8,17 @@ namespace OOP.Objects.Buildings
 {
     internal class Building : GameObject
     {
-        private int id;
-        private string name;
-        private int x;
-        private int y;
-        private bool isBuilded;
-        public Building(int id, string name, int x, int y, bool isBuilded)
+        private protected int id;
+        private protected string name;
+        private protected int x;
+        private protected int y;
+        private protected bool isBuilded;
+        static private protected int actualId = 0;
+        static private protected void updateActualId() { actualId++; }
+        public Building(string name, int x, int y, bool isBuilded)
         {
-            this.id = id;
+            updateActualId();
+            this.id = actualId;
             this.name = name;
             this.x = x;
             this.y = y;
@@ -46,7 +49,7 @@ namespace OOP.Objects.Buildings
         }
         public override string getFullName()
         {
-            return string.Format("{0} (id: {1})", this.getName(), this.getId());
+            return string.Format("{0} (building id: {1})", this.getName(), this.getId());
         }
     }
 }

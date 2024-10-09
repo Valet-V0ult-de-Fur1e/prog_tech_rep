@@ -1,4 +1,6 @@
-﻿using System.Net.Http.Headers;
+﻿using System;
+using System.Net.Http.Headers;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace OOP.Objects.Units
 {
@@ -10,15 +12,20 @@ namespace OOP.Objects.Units
         private protected int y;
         private protected float hp;
 
-        static public int baseDamage = 1;
+        static private protected int baseDamage = 1;
+        static private protected int actualId = 0;
 
-        public Unit(int id, string name, int x, int y, float hp)
+        static private protected void updateActualId() { actualId++; }
+
+        public Unit(string name, int x, int y, float hp)
         {
-            this.id = id;
+            updateActualId();
+            this.id = actualId;
             this.name = name;
             this.x = x;
             this.y = y;
             this.hp = hp;
+            Console.WriteLine("{0}: существо заспавнилось по координатам ({1},{2}) с {3} ед. здоровья", this.getFullName(), this.getX(), this.getY(), this.getHp());
         }
         public float getHp()
         {
@@ -34,7 +41,7 @@ namespace OOP.Objects.Units
             {
                 this.hp -= damage;
                 Console.WriteLine("{0}: получил {1} ед. урона, текущий уровень здоровья {2} ед.", this.getFullName(), damage, this.hp);
-                if (isAlive())
+                if (!isAlive())
                 {
                     Console.WriteLine("{0}: мёртв", this.getFullName());
                 }
@@ -66,7 +73,7 @@ namespace OOP.Objects.Units
 
         public override string getFullName()
         {
-            return string.Format("{0} (id: {1})", this.getName(), this.getId());
+            return string.Format("{0} (unit id: {1})", this.getName(), this.getId());
         }
     }
 }

@@ -11,8 +11,8 @@ namespace OOP.Objects.Buildings
     internal class Fort : Building, Attacker
     {
         private protected int fortsWeaponsDamage = 10;
-        public Fort(int id, string name, int x, int y, bool isBuilded) : base(id, name, x, y, isBuilded) {}
-        public Fort(int id, string name, int x, int y, bool isBuilded, int fortsWeaponsDamage) : base(id, name, x, y, isBuilded)
+        public Fort(string name, int x, int y, bool isBuilded) : base(name, x, y, isBuilded) {}
+        public Fort(string name, int x, int y, bool isBuilded, int fortsWeaponsDamage) : base(name, x, y, isBuilded)
         {
             this.fortsWeaponsDamage = fortsWeaponsDamage;
         }

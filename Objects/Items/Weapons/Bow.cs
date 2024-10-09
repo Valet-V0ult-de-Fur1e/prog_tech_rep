@@ -2,7 +2,7 @@
 {
     internal class Bow : Weapon
     {
-        public Bow(int id, string name, int x, int y) : base(id, name, x, y)
+        public Bow(string name, int x, int y, int attackRadius, int damage) : base(name, x, y, attackRadius, damage)
         {
         }
     }

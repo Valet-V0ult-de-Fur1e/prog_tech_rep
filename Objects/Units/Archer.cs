@@ -7,7 +7,7 @@ namespace OOP.Objects.Units
     internal class Archer : Unit, Attacker, Moveable
     {
         private protected Weapon weapon;
-        public Archer(int id, string name, int x, int y, float hp, Weapon newWeapon) : base(id, name, x, y, hp) 
+        public Archer(string name, int x, int y, float hp, Weapon newWeapon) : base(name, x, y, hp) 
         {
             this.weapon = newWeapon;
             newWeapon.ItemStartUsing();
@@ -21,9 +21,13 @@ namespace OOP.Objects.Units
             if (targetDistance <= weapon.getAttackRadius()) 
             {
                 attackDamage = (float)((Unit.baseDamage + this.weapon.getDamage()) * (1 - targetDistance / weapon.getAttackRadius()));
+                Console.WriteLine("{0}: нанёс {1} ед. урона {2} предметом {3}", this.getFullName(), attackDamage, unit.getFullName(), this.weapon.getFullName());
                 unit.receiveDamage(attackDamage);
             }
-            Console.WriteLine("{0}: нанёс {1} ед. урона {2} предметом {3}", this.getFullName(), attackDamage, unit.getFullName(), this.weapon.getFullName());
+            else
+            {
+                Console.WriteLine("{0}: промахнулся", this.getFullName());
+            }
         }
         public void moveTo(int x, int y)
         {

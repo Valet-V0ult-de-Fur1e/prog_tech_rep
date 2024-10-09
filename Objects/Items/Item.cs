@@ -7,9 +7,12 @@
         private protected int x;
         private protected int y;
         private protected bool isUsed;
-        public Item (int id, string name, int x, int y)
+        static private protected int actualId = 0;
+        static private protected void updateActualId() { actualId++; }
+        public Item (string name, int x, int y)
         {
-            this.id = id;
+            updateActualId();
+            this.id = actualId;
             this.name = name;
             this.x = x;
             this.y = y;
