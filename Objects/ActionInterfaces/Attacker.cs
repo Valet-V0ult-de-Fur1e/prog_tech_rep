@@ -1,7 +1,7 @@
 ﻿using OOP.Objects.Buildings;
 using OOP.Objects.Units;
 
-namespace OOP.ActionInterfaces
+namespace OOP.Objects.ActionInterfaces
 {
     internal interface Attacker
     {

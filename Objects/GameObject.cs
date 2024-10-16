@@ -2,10 +2,29 @@
 {
     abstract class GameObject
     {
-        public abstract int getId();
-        public abstract String getName();
-        public abstract int getX();
-        public abstract int getY();
-        public abstract string getFullName();    
+        private protected int id;
+        private protected string name;
+        private protected int x;
+        private protected int y;
+        public abstract string getFullName();
+        public int getId()
+        {
+            return id;
+        }
+
+        public string getName()
+        {
+            return name;
+        }
+
+        public int getX()
+        {
+            return x;
+        }
+
+        public int getY()
+        {
+            return y;
+        }
     }
 }

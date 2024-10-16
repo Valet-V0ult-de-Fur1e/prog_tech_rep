@@ -6,18 +6,13 @@ namespace OOP.Objects.Units
 {
     internal class Unit : GameObject
     {
-        private protected int id;
-        private protected string name;
-        private protected int x;
-        private protected int y;
         private protected float hp;
-
+        private protected int stamina;
         static private protected int baseDamage = 1;
         static private protected int actualId = 0;
-
         static private protected void updateActualId() { actualId++; }
 
-        public Unit(string name, int x, int y, float hp)
+        public Unit(string name, int x, int y, float hp, int stamina)
         {
             updateActualId();
             this.id = actualId;
@@ -26,10 +21,15 @@ namespace OOP.Objects.Units
             this.y = y;
             this.hp = hp;
             Console.WriteLine("{0}: существо заспавнилось по координатам ({1},{2}) с {3} ед. здоровья", this.getFullName(), this.getX(), this.getY(), this.getHp());
+            this.stamina = stamina;
         }
         public float getHp()
         {
-            return hp;
+            return this.hp;
+        }
+        public int getStamina()
+        {
+            return this.stamina;
         }
         public bool isAlive()
         {
@@ -50,25 +50,6 @@ namespace OOP.Objects.Units
             {
                 Console.WriteLine("{0}: тело получило {1} ед. урона", this.getFullName(), damage);
             }
-        }
-        public override int getId()
-        {
-            return id;
-        }
-
-        public override string getName()
-        {
-            return name;
-        }
-
-        public override int getX()
-        {
-            return x;
-        }
-
-        public override int getY()
-        {
-            return y;
         }
 
         public override string getFullName()

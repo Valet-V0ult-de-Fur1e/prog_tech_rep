@@ -1,4 +1,4 @@
-﻿using OOP.ActionInterfaces;
+﻿using OOP.Objects.ActionInterfaces;
 using OOP.Objects.Buildings;
 using OOP.Objects.Items.Weapons;
 
@@ -7,7 +7,7 @@ namespace OOP.Objects.Units
     internal class Archer : Unit, Attacker, Moveable
     {
         private protected Weapon weapon;
-        public Archer(string name, int x, int y, float hp, Weapon newWeapon) : base(name, x, y, hp) 
+        public Archer(string name, int x, int y, float hp, int stamina, Weapon newWeapon) : base(name, x, y, hp, stamina) 
         {
             this.weapon = newWeapon;
             newWeapon.ItemStartUsing();

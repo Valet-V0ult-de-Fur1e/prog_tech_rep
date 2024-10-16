@@ -1,4 +1,4 @@
-﻿namespace OOP.ActionInterfaces
+﻿namespace OOP.Objects.ActionInterfaces
 {
     internal interface Moveable
     {
