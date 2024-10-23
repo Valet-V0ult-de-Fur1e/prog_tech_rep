@@ -1,8 +1,4 @@
-﻿using System;
-using System.Net.Http.Headers;
-using static System.Net.Mime.MediaTypeNames;
-
-namespace OOP.Objects.Units
+﻿namespace OOP.Objects.Units
 {
     internal class Unit : GameObject
     {
