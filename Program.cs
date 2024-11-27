@@ -1,4 +1,4 @@
-﻿using OOP.Patterns_of_behavior.Strategy;
+﻿using OOP.Patterns_of_structure;
 
 namespace OOP
 {
@@ -6,8 +6,9 @@ namespace OOP
     {
         static void Main(string[] args)
         {
-            TesterPatternsOfBehavior.testStrategyPattern();
-            TesterPatternsOfBehavior.testResponsibilityChainPattern();
+            Tester.TestAdapter();
+            Tester.TestProxy();
+            Tester.TestBridge();
         }
     }
 }
