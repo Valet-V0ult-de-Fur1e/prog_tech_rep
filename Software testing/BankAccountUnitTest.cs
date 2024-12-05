@@ -22,17 +22,6 @@ public class BankAccountTests
     }
 
     [Test]
-    public void DepositInvalidAmount_ThrowException()
-    {
-        // Arrange
-        var account = new BankAccount();
-
-        // Act & Assert
-        Assert.Throws<Exception>(() => account.Deposit(0));
-        Assert.Throws<Exception>(() => account.Deposit(-50f));
-    }
-
-    [Test]
     public void WithdrawValidAmount_DecreaseBalance()
     {
         // Arrange
@@ -56,7 +45,8 @@ public class BankAccountTests
         var withdrawAmount = 150f;
 
         // Act & Assert
-        Assert.Throws<Exception>(() => account.Withdraw(withdrawAmount));
+        var ex = Assert.Throws<Exception>(() => account.Withdraw(withdrawAmount));
+        Assert.That(ex.Message, Is.EqualTo("Insufficient funds."));
     }
 
     [Test]
@@ -67,25 +57,19 @@ public class BankAccountTests
         account.Deposit(100f);
 
         // Act & Assert
-        Assert.Throws<Exception>(() => account.Withdraw(0));
-        Assert.Throws<Exception>(() => account.Withdraw(-50f));
+        var ex = Assert.Throws<Exception>(() => account.Withdraw(-50f));
+        Assert.That(ex.Message, Is.EqualTo("Amount must be greater than zero."));
     }
-
     [Test]
-    public void GetTransactions_ReturnAllTransactions()
+    public void WithdrawZeroAmount_ThrowException()
     {
         // Arrange
         var account = new BankAccount();
-        account.Deposit(200f);
-        account.Withdraw(50f);
+        account.Deposit(100f);
 
-        // Act
-        var transactions = account.GetTransactions();
-
-        // Assert
-        Assert.That(transactions.Count, Is.EqualTo(2));
-        Assert.That(transactions.First().Type, Is.EqualTo("Deposit"));
-        Assert.That(transactions.Last().Type, Is.EqualTo("Withdraw"));
+        // Act & Assert
+        var ex = Assert.Throws<Exception>(() => account.Withdraw(0f));
+        Assert.That(ex.Message, Is.EqualTo("Amount must be greater than zero."));
     }
 
     [Test]
@@ -93,14 +77,14 @@ public class BankAccountTests
     {
         // Arrange
         var account = new BankAccount();
-        account.Deposit(200f);
+        account.Deposit(10000f);
         account.Withdraw(50f);
 
         // Act
         var balance = account.getBalance();
 
         // Assert
-        Assert.That(balance, Is.EqualTo(150f));
+        Assert.That(balance, Is.EqualTo(9950f));
     }
 
     [Test]

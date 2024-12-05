@@ -40,20 +40,11 @@ public class BankAccount: TransactionsUse
 
     public void Deposit(float amount)
     {
-        if (amount <= 0)
-        {
-            throw new Exception("Deposit amount must be positive.");
-        }
         this._transactions.Add(new Transaction(amount, "Deposit"));
     }
 
     public void Withdraw(float amount)
     {
-        if (amount <= 0)
-        {
-            throw new Exception("Withdrawal amount must be positive.");
-        }
-
         if (amount > this.getBalance())
         {
             throw new Exception("Insufficient funds.");
