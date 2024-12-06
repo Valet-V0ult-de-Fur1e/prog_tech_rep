@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-public class Transaction
+﻿public class Transaction
 {
     public float Amount { get; set; }
     public DateTime Date { get; set; }
