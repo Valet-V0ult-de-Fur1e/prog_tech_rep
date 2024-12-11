@@ -12,6 +12,8 @@ namespace Study_project
             ProductModel bike1 = new ProductModel { Name = "stels navigator black", Price = 20000, Category = bikesCategory };
             db.createProduct(bike1);
             db.showAllProductForCategories();
+            db.updateCategory("bikes", "black bikes");
+            db.showAllProductForCategories();
             db.deleteCategory(bikesCategory);
         }
     }

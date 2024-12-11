@@ -31,10 +31,6 @@ namespace Study_project.work_with_ORM.models
                 }
             }
         }
-        public void createCategory(string categoryName)
-        {
-            this.createCategory(new CategoryModel { Name = categoryName });
-        }
         public void createCategory(CategoryModel newCategory)
         {
             try
@@ -47,6 +43,10 @@ namespace Study_project.work_with_ORM.models
             {
                 Console.WriteLine(ex.Message.ToString());
             }
+        }
+        public void createCategory(string categoryName)
+        {
+            this.createCategory(new CategoryModel { Name = categoryName });
         }
         public void updateCategory(string categoryName, string categoryNewName)
         {
@@ -91,11 +91,54 @@ namespace Study_project.work_with_ORM.models
             {
                 this.context.Products.Add(newProduct);
                 context.SaveChanges();
-                Console.WriteLine($"added new category {newProduct.Name}");
+                Console.WriteLine($"added new product {newProduct.Name} to category {newProduct.Category.Name}");
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message.ToString());
+            }
+        }
+        public void updateProduct(ProductModel product, string productNewName)
+        {
+            var productToUpdate = this.context.Products.FirstOrDefault(p => p.Name == product.Name);
+            if (productToUpdate != null)
+            {
+                productToUpdate.Name = productNewName;
+                context.SaveChanges();
+                Console.WriteLine($"updated product {product.Name} name to {productNewName}");
+            }
+            else
+            {
+                Console.WriteLine($"ERROR: can`t find category {product.Name}");
+            }
+        }
+        public void updateProduct(ProductModel product, float productNewPrice)
+        {
+            var productToUpdate = this.context.Products.FirstOrDefault(p => p.Name == product.Name);
+            if (productToUpdate != null)
+            {
+                productToUpdate.Price = productNewPrice;
+                context.SaveChanges();
+                Console.WriteLine($"updated product {product.Name} price to {productNewPrice}");
+            }
+            else
+            {
+                Console.WriteLine($"ERROR: can`t find category {product.Name}");
+            }
+        }
+        public void updateProduct(ProductModel product, string productNewName, float productNewPrice)
+        {
+            var productToUpdate = this.context.Products.FirstOrDefault(p => p.Name == product.Name);
+            if (productToUpdate != null)
+            {
+                productToUpdate.Price = productNewPrice;
+                productToUpdate.Name= productNewName;
+                context.SaveChanges();
+                Console.WriteLine($"updated product {product.Name} name to {productNewName} price to {productNewPrice}");
+            }
+            else
+            {
+                Console.WriteLine($"ERROR: can`t find category {product.Name}");
             }
         }
         public void deleteProduct(ProductModel productModel)
